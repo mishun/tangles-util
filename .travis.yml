@@ -1,0 +1,45 @@
+sudo: false
+language: c
+
+cache:
+  directories:
+  - $HOME/.ghc
+  - $HOME/.cabal
+  - $HOME/.stack
+
+matrix:
+  include:
+    - compiler: ": #stack default"
+      env: ARGS="--ghc-options=-pgmc=gcc-4.9"
+      addons:
+        apt:
+          sources: [ubuntu-toolchain-r-test]
+          packages: [g++-4.9, libgsl0-dev, libgmp-dev]
+
+    - compiler: ": #stack 7.10.3"
+      env: ARGS="--ghc-options=-pgmc=gcc-4.9 --resolver=lts-5"
+      addons:
+        apt:
+          sources: [hvr-ghc, ubuntu-toolchain-r-test]
+          packages: [g++-4.9, libgsl0-dev, ghc-7.10.3]
+
+    - compiler: ": #stack nightly"
+      env: ARGS="--ghc-options=-pgmc=gcc-4.9 --resolver=nightly"
+      addons:
+        apt:
+          sources: [ubuntu-toolchain-r-test]
+          packages: [g++-4.9, libgsl0-dev, libgmp-dev]
+
+  allow_failures:
+    - compiler: ": #stack nightly"
+
+before_install:
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
+install:
+  - stack --stack-yaml=stack-ci.yaml --no-terminal -j2 --install-ghc test $ARGS --only-dependencies
+
+script:
+  - stack --stack-yaml=stack-ci.yaml --no-terminal -j2 build $ARGS

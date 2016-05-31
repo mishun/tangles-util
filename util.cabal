@@ -1,0 +1,148 @@
+name:               util
+version:            0.0
+author:             Alexander Mishunin
+maintainer:         alexander.mishunin@gmail.com
+stability:          Experimental
+license:            LGPL-3
+category:           Math
+build-type:         Simple
+cabal-version:      >=1.18
+
+
+executable DubrovnikBase
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    ghc-prof-options:   -prof -auto-all -caf-all
+    build-depends:
+        base >=4.6,
+        vector >=0.10,
+        array,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        tangles,
+        diagrams-tangles
+    hs-source-dirs:     DubrovnikBase
+    main-is:            DubrovnikBase.hs
+
+
+executable DrawKnot
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    hs-source-dirs:     DrawKnot
+    main-is:            DrawKnot.hs
+
+
+executable DrawTangleStarGlues
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    hs-source-dirs:     DrawTangleStarGlues
+    main-is:            DrawTangleStarGlues.hs
+
+
+executable GenerateTangles
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    other-modules:
+        TestUtil.Table
+    hs-source-dirs:     GenerateTangles, test
+    main-is:            GenerateTangles.hs
+
+
+executable GenerateVirtualLinks
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    other-modules:
+        TestUtil.Table
+    hs-source-dirs:     GenerateVirtualLinks, test
+    main-is:            GenerateVirtualLinks.hs
+
+
+executable PrintChordDiagramsTable
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    hs-source-dirs:     PrintChordDiagramsTable
+    main-is:            PrintChordDiagramsTable.hs
+
+
+executable PrintLinksTable
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    other-modules:
+        TestUtil.Table
+    hs-source-dirs:     PrintLinksTable, test
+    main-is:            PrintLinksTable.hs
+
+
+executable TorusProjections
+    default-language:   Haskell2010
+    default-extensions: BangPatterns
+    ghc-options:        -Wall
+    build-depends:
+        base >=4.6,
+        vector >=0.10,
+        mtl,
+        containers,
+        diagrams-lib >=1.3,
+        diagrams-svg,
+        tangles,
+        diagrams-tangles
+    other-modules:
+        TestUtil.Table
+    hs-source-dirs:     TorusProjections, test
+    main-is:            TorusProjections.hs

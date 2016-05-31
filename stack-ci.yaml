@@ -1,0 +1,24 @@
+resolver: lts-5.16
+
+packages:
+- '.'
+- location:
+    git: https://github.com/mishun/tangles.git
+    commit: HEAD
+  extra-dep: true
+- location:
+    git: https://github.com/mishun/diagrams-tangles.git
+    commit: HEAD
+  extra-dep: true
+
+extra-deps:
+- HaskellForMaths-0.4.8
+- disjoint-set-0.2
+
+flags:
+  tangles:
+    internal-tests: true
+
+extra-package-dbs: []
+
+system-ghc: true
