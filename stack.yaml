@@ -2,10 +2,8 @@ resolver: lts-5.16
 
 packages:
 - '.'
-- location: '../tangles'
-  extra-dep: true
-- location: '../diagrams-tangles'
-  extra-dep: true
+- '../tangles'
+- '../diagrams-tangles'
 
 extra-deps:
 - HaskellForMaths-0.4.8
